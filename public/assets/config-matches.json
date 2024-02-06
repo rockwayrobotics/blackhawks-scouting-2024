@@ -138,6 +138,7 @@
           "name": "Stage Location",
           "type": "radio",
           "options": [
+            "None",
             "Stage Left",
             "Stage Right",
             "Center Stage"
@@ -151,6 +152,7 @@
           "name": "Trap Note Position",
           "type": "radio",
           "options": [
+            "None",
             "Stage Left",
             "Stage Right",
             "Center Stage"
