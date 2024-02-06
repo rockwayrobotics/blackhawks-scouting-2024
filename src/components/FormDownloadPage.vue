@@ -1,7 +1,7 @@
 <template>
   <FormPage title="Download Data" ref="page">
     <FormGroup :label-type="LabelType.None" :colspan="2" align="center">
-      <button @click="qrContainer?.showModal()">Generate QR Code</button>
+      <button @click="show()">Generate QR Code</button>
     </FormGroup>
     <FormGroup :label-type="LabelType.None" :colspan="2" align="center">
       <button @click="clearForm">Save and Clear Form</button>
@@ -20,16 +20,16 @@
       <RouterLink :to="{ name: 'home' }">Home</RouterLink>
     </FormGroup>
   </FormPage>
-  <dialog ref="qrContainer">
+  <div ref="qrContainer" style="display: none">
     <div id="qr-dialog-contents">
-      <button id="qr-dialog-close" @click="qrContainer?.close">Close</button>
+      <button id="qr-dialog-close" @click="hide()">Close</button>
       <div>
         <input type="checkbox" v-model="excludeHeaders" id="exclude-headers" />
         <label for="exclude-headers">Exclude headers in code</label>
       </div>
       <qrcode-vue :value="qrData" level="M" render-as="svg" :size="350" />
     </div>
-  </dialog>
+  </div>
 </template>
 
 <script setup lang="ts">
@@ -55,6 +55,16 @@ function clearForm() {
   widgets.save();
   router.go(0); // Reload the page
 }
+
+function show(){
+  if (qrContainer){
+  qrContainer.style.display = "block";}
+}
+function hide(){
+  if (qrContainer){
+  qrContainer.style.display = "none";}
+}
+
 
 defineExpose({ title: computed(() => page?.title), setShown: computed(() => page?.setShown) });
 </script>
