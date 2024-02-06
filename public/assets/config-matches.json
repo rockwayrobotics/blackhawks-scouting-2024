@@ -6,14 +6,6 @@
       "name": "Setup",
       "widgets": [
         {
-          "name": "Scouter Name",
-          "type": "text",
-          "validation": {
-            "comparison": "greater",
-            "value": 0
-          }
-        },
-        {
           "name": "Starting Position",
           "type": "positions",
           "file": "field.png"
@@ -143,8 +135,8 @@
           "type": "checkbox"
         },
         {
-          "name": "Robots Onstage",
-          "type": "multicheckbox",
+          "name": "Stage Location",
+          "type": "radio",
           "options": [
             "Stage Left",
             "Stage Right",
@@ -156,8 +148,8 @@
           "type": "checkbox"
         },
         {
-          "name": "Trap Note Positions",
-          "type": "multicheckbox",
+          "name": "Trap Note Position",
+          "type": "radio",
           "options": [
             "Stage Left",
             "Stage Right",
