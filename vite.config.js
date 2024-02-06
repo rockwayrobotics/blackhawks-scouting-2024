@@ -25,11 +25,11 @@ export default defineConfig({
     VitePWA({
       includeAssets: ["assets/*", "icons/*"],
       manifest: {
-        name: "Black Hawks Scouting",
+        name: "Rockway Robotics Scouting",
         short_name: "Scouting",
         description: "A scouting app by FRC Team 2834",
-        theme_color: "#292929",
-        background_color: "#292929",
+        theme_color: "#C70039",
+        background_color: "#28282B",
         icons: [
           {
             src: "icons/pwa-192x192.png",

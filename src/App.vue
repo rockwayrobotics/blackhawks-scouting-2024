@@ -22,10 +22,10 @@ onErrorCaptured(obj => {
 
 <style>
 :root {
-  --text-color: #ddd;
-  --bg-color: #292929;
-  --button-color: #3e3e3e;
-  --input-color: #1c1c1c;
+  --text-color: #F9F6EE;
+  --bg-color: #28282B;
+  --button-color: #C70039;
+  --input-color: #36454F;
 }
 
 * {
@@ -36,12 +36,15 @@ onErrorCaptured(obj => {
 img {
   display: block;
   user-select: none;
+  border-radius: 5px;
 }
 
 body {
   font-family: Arial, Helvetica, sans-serif;
   background-color: var(--bg-color);
   margin: 0;
+  border-radius: 5px;
+  padding: 0.5em;
 }
 
 button {
@@ -52,20 +55,25 @@ button {
 
 input, select, textarea {
   background-color: var(--input-color);
+  border-radius: 5px;
+  padding: 0.5em;
 }
 
 button, input, select, textarea {
   font-size: 100%;
   border: none;
+  border-radius: 5px;
+  accent-color: var(--button-color);
 }
 
-table {
+/* table {
   border-collapse: collapse;
-}
+} */
 
 td, th {
-  border: 1px solid var(--text-color);
-  padding: 2px;
+  border-radius: 5px;
+  padding: 0.5em;
+  background-color: var(--input-color);
 }
 
 @media (pointer:none),
