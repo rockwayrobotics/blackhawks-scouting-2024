@@ -1,7 +1,6 @@
 import Ajv from "ajv";
 import { ConfigSchema, Widget } from "@/config";
 import { defineStore } from "pinia";
-import { isFailed, TBAData } from "./tba";
 import { Ref } from "vue";
 import { useStorage } from "@vueuse/core";
 import validate from "./validate";
@@ -119,38 +118,4 @@ export const useValidationStore = defineStore("validation", () => {
   const failedPage = $ref(-1); // Index of page that failed validation (-1 indicates success)
 
   return $$({ triggerPages, failedPage });
-});
-
-// Store to contain data fetched from The Blue Alliance
-export const useTBAStore = defineStore("tba", () => {
-  let eventCode = $ref(useStorage("tbaEventCode", ""));
-  const savedData = $ref(useStorage("tbaSavedData", new Map<string, object>()));
-
-  // Loads TBA data using cache if specified.
-  async function load(code: string, name: string): Promise<TBAData> {
-    // If an empty code is given, use the cached data in local storage (if it exists)
-    if (code === "") {
-      const localData = savedData.get(name);
-      const promise = await Promise.resolve(localData ?? {});
-      return { code: eventCode, data: promise };
-    }
-
-    // Otherwise, fetch the data from the API, passing the API key (must be set in env)
-    const fetchData = await fetch(`https://www.thebluealliance.com/api/v3/event/${code}/${name}/simple`, {
-      headers: { "X-TBA-Auth-Key": import.meta.env.VITE_TBA_API_KEY }
-    });
-
-    // Parse the data as a JSON object
-    const data = await fetchData.json();
-
-    // If the fetch succeeded, cache the results
-    if (!isFailed(data)) {
-      savedData.set(name, data);
-      eventCode = code;
-    }
-
-    return { code, data };
-  }
-
-  return $$({ eventCode, savedData, load });
 });
