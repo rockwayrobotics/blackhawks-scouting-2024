@@ -6,9 +6,19 @@
       "name": "Setup",
       "widgets": [
         {
-          "name": "Starting Position",
-          "type": "positions",
-          "file": "field.png"
+          "name": "Starting Location",
+          "type": "radio",
+          "options": [
+            "Amp",
+            "Speaker",
+            "Source"
+          ]
+        },
+        {
+          "type": "picture",
+          "file": "newFieldTemp.png",
+          "colspan": 2,
+          "height": 250
         }
       ]
     },
