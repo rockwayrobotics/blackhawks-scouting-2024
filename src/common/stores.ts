@@ -52,7 +52,7 @@ export const useWidgetsStore = defineStore("widgets", () => {
     // Get header and record from the data (`name` is already a string so it does not need stringification)
     // Then add the current timestamp as the last field in the record
     const header = values.map(i => i.name).concat("ScoutedTime");
-    const record = values.map(i => stringify(i.value)).concat(new Date().toString());
+    const record = values.map(i => stringify(i.value));
     return { header, values: [record] };
   }
 
